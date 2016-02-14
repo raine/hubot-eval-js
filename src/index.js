@@ -10,7 +10,7 @@ const RF = require('ramda-fantasy')
 
 const evalCode = (str) => {
   const VM = require('vm2').VM
-  const sandbox = mergeAll([ { R, S } ], R, RF)
+  const sandbox = mergeAll([ { R, S }, R, RF ])
   const vm = new VM({ sandbox })
   return vm.run(str)
 }
