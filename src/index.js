@@ -1,18 +1,19 @@
 // Description:
 //   eval
 
-const S = require('sanctuary')
 const inspect = require('util').inspect
-const { mergeAll, pipe } = require('ramda')
+const { mergeAll, pipe, tap } = require('ramda')
 const { mdCode, mdPre } = require('./markdown')
+const S = require('sanctuary')
 const R = require('ramda')
 const RF = require('ramda-fantasy')
+const vm = require('vm')
 
 const evalCode = (str) => {
-  const VM = require('vm2').VM
   const sandbox = mergeAll([ { R, S }, R, RF ])
-  const vm = new VM({ sandbox })
-  return vm.run(str)
+  return vm.runInNewContext(str, sandbox, {
+    timeout: 10000
+  })
 }
 
 const formatValue = pipe(inspect, mdCode('js'))

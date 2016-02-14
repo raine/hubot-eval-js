@@ -8,8 +8,7 @@
   "dependencies": {
     "ramda": "^0.19.1",
     "ramda-fantasy": "^0.4.1",
-    "sanctuary": "^0.8.0",
-    "vm2": "^1.0.1"
+    "sanctuary": "^0.8.0"
   },
   "devDependencies": {
     "babel-eslint": "^4.1.8",
