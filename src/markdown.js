@@ -5,4 +5,4 @@ exports.mdLink = curry((text, url) => `[${text}](${url})`)
 exports.mdBold = wrap('**')
 exports.mdStrike = wrap('~~')
 exports.mdPre = wrap('`')
-exports.mdCode = (str) => '```\n' + str + '\n```'
+exports.mdCode = curry((lang, str) => '```' + lang + '\n' + str + '\n```')

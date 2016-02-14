@@ -15,7 +15,7 @@ const evalCode = (str) => {
   return vm.run(str)
 }
 
-const formatValue = pipe(inspect, mdCode)
+const formatValue = pipe(inspect, mdCode('js'))
 const readEvaluateAndPrint = (res) => {
   try {
     res.reply(formatValue(evalCode(res.match[1])))
