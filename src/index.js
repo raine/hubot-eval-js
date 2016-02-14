@@ -3,13 +3,14 @@
 
 const S = require('sanctuary')
 const inspect = require('util').inspect
-const { merge, pipe } = require('ramda')
+const { mergeAll, pipe } = require('ramda')
 const { mdCode, mdPre } = require('./markdown')
 const R = require('ramda')
+const RF = require('ramda-fantasy')
 
 const evalCode = (str) => {
   const VM = require('vm2').VM
-  const sandbox = merge({ R, S }, R)
+  const sandbox = mergeAll([ { R, S } ], R, RF)
   const vm = new VM({ sandbox })
   return vm.run(str)
 }
