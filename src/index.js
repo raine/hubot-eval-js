@@ -2,7 +2,7 @@
 //   eval
 
 const inspect = require('util').inspect
-const { mergeAll, pipe, tap } = require('ramda')
+const { concat, mergeAll, pipe } = require('ramda')
 const { mdCode, mdPre } = require('./markdown')
 const S = require('sanctuary')
 const R = require('ramda')
