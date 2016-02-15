@@ -16,10 +16,10 @@ const evalCode = (str) => {
   })
 }
 
-const formatValue = pipe(inspect, mdCode('js'))
+const formatValueToReply = pipe(inspect, mdCode('js'), concat('\n'))
 const readEvaluateAndPrint = (res) => {
   try {
-    res.reply(formatValue(evalCode(res.match[1])))
+    res.reply(formatValueToReply(evalCode(res.match[1])))
   } catch (e) {
     res.reply(mdPre(e))
   }
