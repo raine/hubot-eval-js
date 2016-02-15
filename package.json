@@ -1,8 +1,12 @@
 {
   "name": "hubot-eval-js",
   "version": "1.0.4",
-  "description": "",
-  "main": "src/index.js",
+  "description": "JavaScript REPL for hubot",
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "babel -d lib/ src/",
+    "prepublish": "npm test && npm run build"
+  },
   "author": "Raine Virta <raine.virta@gmail.com>",
   "license": "ISC",
   "dependencies": {
@@ -11,8 +15,8 @@
     "sanctuary": "^0.8.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.5.1",
     "babel-eslint": "^4.1.8",
-    "babel-preset-es2015-node5": "^1.1.2",
-    "babel-register": "^6.5.1"
+    "babel-preset-es2015-node5": "^1.1.2"
   }
 }
