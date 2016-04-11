@@ -16,9 +16,11 @@ const evalCode = (str) => {
   })
 }
 
-const formatValueToReply = pipe(inspect, mdCode('js'), concat('\n'))
+const inspectInfinite = (val) => inspect(val, { depth: Infinity })
+const formatValueToReply = pipe(inspectInfinite, mdCode('js'), concat('\n'))
 const readEvaluateAndPrint = (res) => {
   try {
+    // TODO: res.reply mentions user which is kind of useless
     res.reply(formatValueToReply(evalCode(res.match[1])))
   } catch (e) {
     res.reply(mdPre(e))
