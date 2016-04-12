@@ -11,9 +11,9 @@
   "author": "Raine Virta <raine.virta@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "ramda": "^0.19.1",
+    "ramda": "^0.21.0",
     "ramda-fantasy": "^0.4.1",
-    "sanctuary": "^0.8.0"
+    "sanctuary": "^0.10.0"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
