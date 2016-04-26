@@ -3,7 +3,7 @@
 
 const inspect = require('util').inspect
 const { concat, mergeAll, pipe } = require('ramda')
-const { mdCode, mdPre } = require('./markdown')
+const { mdCode } = require('./markdown')
 const S = require('sanctuary')
 const R = require('ramda')
 const RF = require('ramda-fantasy')
@@ -16,6 +16,14 @@ const evalCode = (str) => {
   })
 }
 
+//    formatError :: Error -> String
+const formatError =
+S.pipe([String,
+        S.lines,
+        R.prepend('```'),
+        R.append('```'),
+        S.unlines])
+
 const inspectInfinite = (val) => inspect(val, { depth: Infinity })
 const formatValueToReply = pipe(inspectInfinite, mdCode('js'), concat('\n'))
 const readEvaluateAndPrint = (res) => {
@@ -23,7 +31,7 @@ const readEvaluateAndPrint = (res) => {
     // TODO: res.reply mentions user which is kind of useless
     res.reply(formatValueToReply(evalCode(res.match[1])))
   } catch (e) {
-    res.reply(mdPre(e))
+    res.reply(formatError(e))
   }
 }
 
