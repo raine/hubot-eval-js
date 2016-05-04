@@ -2,7 +2,7 @@
 //   eval
 
 const inspect = require('util').inspect
-const { concat, mergeAll, pipe } = require('ramda')
+const { concat, mergeAll, pipe, ifElse, test } = require('ramda')
 const { mdCode, mdPre } = require('./markdown')
 const S = require('sanctuary')
 const R = require('ramda')
@@ -16,14 +16,18 @@ const evalCode = (str) => {
   })
 }
 
+const nlMdCode = lang => pipe(mdCode(lang), concat('\n'))
+const isMultiline = test(/\n/)
 const inspectInfinite = (val) => inspect(val, { depth: Infinity })
-const formatValueToReply = pipe(inspectInfinite, mdCode('js'), concat('\n'))
+const getErrorMessage = (e) => e.message || String(e)
+const formatValueToReply = pipe(inspectInfinite, nlMdCode('js'))
+const formatErrorToReply = pipe(getErrorMessage, ifElse(isMultiline, nlMdCode(''), mdPre))
 const readEvaluateAndPrint = (res) => {
   try {
     // TODO: res.reply mentions user which is kind of useless
     res.reply(formatValueToReply(evalCode(res.match[1])))
   } catch (e) {
-    res.reply(mdPre(e))
+    res.reply(formatErrorToReply(e))
   }
 }
 
