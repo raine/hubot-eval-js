@@ -21,7 +21,7 @@ const isMultiline = test(/\n/)
 const inspectInfinite = (val) => inspect(val, { depth: Infinity })
 const getErrorMessage = (e) => e.message || String(e)
 const formatValueToReply = pipe(inspectInfinite, nlMdCode('js'))
-const formatErrorToReply = pipe(getErrorMessage, ifElse(isMultiline, nlMdCode(''), mdPre))
+const formatErrorToReply = pipe(getErrorMessage, ifElse(isMultiline, nlMdCode('text'), mdPre))
 const readEvaluateAndPrint = (res) => {
   try {
     // TODO: res.reply mentions user which is kind of useless
