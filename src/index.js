@@ -19,7 +19,7 @@ const evalCode = (str) => {
 const nlMdCode = lang => pipe(mdCode(lang), concat('\n'))
 const isMultiline = test(/\n/)
 const inspectInfinite = (val) => inspect(val, { depth: Infinity })
-const getErrorMessage = (err) => e.message || String(e)
+const getErrorMessage = (e) => e.message || String(e)
 const formatValueToReply = pipe(inspectInfinite, nlMdCode('js'))
 const formatErrorToReply = pipe(getErrorMessage, ifElse(isMultiline, nlMdCode('txt'), mdPre))
 const readEvaluateAndPrint = (res) => {
