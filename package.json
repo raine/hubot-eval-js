@@ -13,7 +13,7 @@
   "dependencies": {
     "ramda": "^0.21.0",
     "ramda-fantasy": "^0.4.1",
-    "sanctuary": "^0.10.0"
+    "sanctuary": "*"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
