@@ -10,6 +10,7 @@
   },
   "author": "Raine Virta <raine.virta@gmail.com>",
   "license": "ISC",
+  "repository": "raine/hubot-eval-js",
   "dependencies": {
     "ramda": "^0.23.0",
     "ramda-fantasy": "^0.4.1",
