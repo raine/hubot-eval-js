@@ -11,7 +11,7 @@
   "author": "Raine Virta <raine.virta@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "ramda": "^0.21.0",
+    "ramda": "^0.23.0",
     "ramda-fantasy": "^0.4.1",
     "sanctuary": "*"
   },
