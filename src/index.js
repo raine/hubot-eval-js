@@ -8,6 +8,7 @@ const S = require('sanctuary')
 const R = require('ramda')
 const RF = require('ramda-fantasy')
 const vm = require('vm')
+const treisInit = require('treis').__init
 
 const evalCode = (str) => {
   const output = []
@@ -17,7 +18,12 @@ const evalCode = (str) => {
       return undefined
     }
   }
-  const sandbox = mergeAll([ { R, S, console }, R, RF ])
+  const treis = treisInit(console.log, false)
+  const sandbox = mergeAll([
+    { R, S, console, treis, trace: treis },
+    R,
+    RF
+  ])
   return {
     value: vm.runInNewContext(str, sandbox, {
       timeout: 10000

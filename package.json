@@ -14,7 +14,8 @@
   "dependencies": {
     "ramda": "^0.23.0",
     "ramda-fantasy": "^0.4.1",
-    "sanctuary": "*"
+    "sanctuary": "*",
+    "treis": "^2.5.0"
   },
   "devDependencies": {
     "babel-cli": "^6.5.1",
