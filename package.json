@@ -1,6 +1,6 @@
 {
   "name": "hubot-eval-js",
-  "version": "2.4.0",
+  "version": "2.5.0",
   "description": "JavaScript REPL for hubot",
   "main": "lib/index.js",
   "scripts": {
